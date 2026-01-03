@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — Cricket Tournament</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+
+<header>
+  <h1>🏏 Cricket Tournament</h1>
+  <nav style="display:flex;gap:12px;align-items:center">
+    <a href="index.html">Home</a>
+    <a href="scheduling.html">Scheduling</a>
+    <a href="points.html">Points Table</a>
+    <a href="playoffs.html">Playoffs</a>
+      <label class="switch" style="margin-left:8px">
+        <input type="checkbox" id="themeToggle" checked>
+        <span class="slider"></span>
+      </label>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="hero">
+    <h2>Cricket<br>Tournament Manager</h2>
+    <p>Professional scheduling, points & playoffs — quick, offline and mobile-friendly.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon blue badge-3d">👥</div>
+      <div>
+        <h3 id="teamsCount">0</h3>
+        <span>Total Teams</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon pink badge-3d">📅</div>
+      <div>
+        <h3 id="matchesCount">0</h3>
+        <span>Total Matches</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon green badge-3d">✔️</div>
+      <div>
+        <h3 id="completedCount">0</h3>
+        <span>Completed</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon orange badge-3d">📊</div>
+      <div>
+        <h3 id="upcomingCount">0</h3>
+        <span>Upcoming</span>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h3>Add Teams</h3>
+    <form id="teamForm" class="team-form" onsubmit="return false">
+      <div id="logoDrop" class="logo-drop" title="Click or drop image to upload">
+        <img id="logoPreview" src="" alt="" style="display:none;border-radius:10px">
+        <div id="logoPlaceholder" style="display:flex;flex-direction:column;align-items:center">
+          <div style="font-size:28px">📁</div>
+          <div class="label">Drop logo or click</div>
+        </div>
+        <input id="teamLogo" type="file" accept="image/*" style="display:none">
+      </div>
+      <div class="team-inputs">
+        <div class="row">
+          <input id="teamName" type="text" placeholder="Team name">
+          <button id="addTeamBtn" class="button" style="width:120px">Add</button>
+        </div>
+        <div class="help">Tip: Upload a square logo for best results.</div>
+      </div>
+    </form>
+    <div id="teamsList" style="margin-top:12px"></div>
+  </section>
+
+  <section style="margin-top:18px">
+    <a class="button" href="scheduling.html">Go to Scheduling</a>
+    <a class="button" href="points.html">View Points Table</a>
+  </section>
+
+</div>
+
+<footer>
+  Offline • Mobile Ready • IPL Style
+</footer>
+
+<script src="main.js"></script>
+
+</body>
+</html>

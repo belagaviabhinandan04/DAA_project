@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  /* Valorant-inspired palette */
+  --bg:#08060a; /* near black */
+  --surface:#0f0d12; /* card background */
+  --text:#e6e6e6;
+  --muted:#9aa0a6;
+  --accent:#ff4655; /* valorant red */
+  --accent-2:#a855f7; /* violet secondary */
+  --neon:#00fff0; /* cyan pop */
+  --glow:0 8px 30px rgba(255,70,85,0.12);
+}
+
+[data-theme="light"]{
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --text:#111827;
+  --muted:#64748b;
+}
+
+*{box-sizing:border-box;}
+body{margin:0;font-family:Orbitron, Poppins, sans-serif;background:radial-gradient(1200px 600px at 10% 10%, rgba(168,85,247,0.06), transparent 8%), radial-gradient(800px 400px at 90% 90%, rgba(255,70,85,0.05), transparent 8%), var(--bg);color:var(--text);transition:0.3s;}
+header{padding:16px;display:flex;align-items:center;justify-content:space-between;background:transparent;position:sticky;top:0;z-index:10;backdrop-filter: blur(6px);}
+header h1{font-size:18px;display:flex;align-items:center;gap:8px;flex:1;font-weight:700;letter-spacing:0.6px}
+.theme-toggle{cursor:pointer;font-size:20px}
+.container{padding:18px;}
+.hero{text-align:center;padding:28px 10px;}
+.hero h2{font-size:34px;line-height:1.1;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;color:transparent;}
+.hero p{color:var(--muted); font-size:14px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;margin-top:16px;}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:16px;display:flex;gap:12px;align-items:center;box-shadow:var(--glow);transform:translateZ(0);transition:transform .28s, box-shadow .28s;border:1px solid rgba(255,255,255,0.03)}
+.card:hover{transform:translateY(-8px) rotateX(4deg);box-shadow:0 20px 50px rgba(164,37,59,0.18), 0 6px 18px rgba(168,85,247,0.06)}
+.icon{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:26px;color:white;box-shadow:0 6px 20px rgba(0,0,0,0.6);}
+.blue{background:linear-gradient(90deg,#2dd4bf,#06b6d4)}
+.pink{background:linear-gradient(90deg,#ff4660,#a855f7)}
+.green{background:linear-gradient(90deg,#22c55e,#16a34a)}
+.orange{background:linear-gradient(90deg,#ff7a18,#ff4655)}
+.card h3{margin:0;font-size:20px;}
+.card span{color:var(--muted); font-size:12px}
+section{margin-top:20px;background:var(--surface);border-radius:14px;padding:14px;box-shadow:0 8px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.02)}
+input,select,button{width:100%;padding:10px;margin-top:8px;border-radius:10px;border:none;font-size:14px;background:transparent;color:var(--text)}
+input,select{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));}
+button{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;font-weight:700;cursor:pointer;transition:0.25s;border:none;padding:10px 12px;box-shadow:0 8px 30px rgba(255,70,85,0.12)}
+button:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(168,85,247,0.12)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;background:transparent}
+th,td{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:center}
+th{color:var(--accent);font-weight:700}
+footer{text-align:center;padding:16px;color:var(--muted);font-size:12px}
+.match-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.match-row input{width:70px}
+#playoffsSection{display:none}
+
+/* neon/glow decorations */
+.neon {text-shadow:0 2px 8px rgba(255,70,85,0.18), 0 0 18px rgba(168,85,247,0.06)}
+.badge-3d{position:relative;display:inline-block;padding:6px 10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.1));box-shadow:0 8px 30px rgba(168,85,247,0.06);transform:translateZ(0)}
+.badge-3d:before{content:"";position:absolute;inset:0;border-radius:10px;padding:1px;background:linear-gradient(90deg, rgba(255,70,85,0.12), rgba(168,85,247,0.08));-webkit-mask:linear-gradient(#000,#000) content-box, linear-gradient(#000,#000);mask:linear-gradient(#000,#000) content-box, linear-gradient(#000,#000);pointer-events:none}
+
+
+/* LIGHT/DARK TOGGLE SWITCH */
+.switch {position: relative;display: inline-block;width:54px;height:28px}
+.switch input {display:none}
+.slider {position:absolute;cursor:pointer;top:0; left:0; right:0; bottom:0;background:linear-gradient(90deg,rgba(255,255,255,0.04),rgba(0,0,0,0.08));transition:.4s;border-radius:34px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+.slider:before {position:absolute;content:"";height:20px; width:20px;left:4px; bottom:4px;background:linear-gradient(180deg,#fff,#e6e6e6);transition:.4s;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+input:checked + .slider {background:linear-gradient(90deg,var(--accent),var(--accent-2));}
+input:checked + .slider:before {transform:translateX(26px)}
+
+/* small button-like link */
+.button{display:inline-block;padding:10px 14px;border-radius:10px;color:white;text-decoration:none;background:linear-gradient(90deg,var(--accent),var(--accent-2));font-weight:700;box-shadow:0 10px 30px rgba(255,70,85,0.12)}
+
+/* Add Teams - modern form */
+.team-form{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+.logo-drop{width:120px;height:120px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;border:1px dashed rgba(255,255,255,0.04);transition:transform .18s ease, box-shadow .18s ease}
+.logo-drop img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.logo-drop .label{font-size:12px;color:var(--muted);margin-top:6px}
+.logo-drop.dragover{box-shadow:0 18px 48px rgba(168,85,247,0.08);transform:translateY(-6px)}
+.team-inputs{display:flex;flex-direction:column;gap:8px}
+.team-inputs .row{display:flex;gap:8px}
+.team-inputs input[type=text]{flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)}
+.team-inputs .small{width:120px}
+.team-form .help{font-size:12px;color:var(--muted)}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+  .hero h2{font-size:24px;}
+  .cards{grid-template-columns:1fr 1fr;}
+  input, select, button{font-size:13px; padding:8px;}
+  .card h3{font-size:18px;}
+  .card span{font-size:11px;}
+  .match-row{flex-direction:column;}
+  .match-row input, .match-row button{margin-top:5px;width:100%;}
+}
+
+/* NAV BUTTONS AND ANIMATIONS */
+header nav a{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:10px;
+  color:var(--text);
+  text-decoration:none;
+  font-weight:700;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.03);
+  transition:transform .25s ease, box-shadow .25s ease;
+  position:relative;overflow:hidden;
+}
+header nav a::after{
+  content:'';position:absolute;left:0;bottom:0;height:3px;width:100%;transform:translateX(-100%);background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:transform .35s ease;
+}
+header nav a:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,70,85,0.08);}
+header nav a:hover::after{transform:translateX(0);}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes floatUp{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+.hero h2,.hero p{animation:fadeInUp .8s cubic-bezier(.2,.9,.3,1) both}
+.cards .card{animation:fadeInUp .7s cubic-bezier(.2,.9,.3,1) both}
+.cards .card:nth-child(1){animation-delay:.03s}
+.cards .card:nth-child(2){animation-delay:.09s}
+.cards .card:nth-child(3){animation-delay:.15s}
+.cards .card:nth-child(4){animation-delay:.21s}
+
+.match-row{animation:fadeInUp .45s ease both}
+.button{transition:transform .18s ease, box-shadow .18s ease}
+.button:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(168,85,247,0.12)}
+
+/* subtle animated hero glow */
+.hero{position:relative;overflow:visible}
+.hero::after{content:"";position:absolute;left:50%;top:-30%;width:800px;height:300px;transform:translateX(-50%);background:radial-gradient(circle at 30% 30%, rgba(255,70,85,0.12), transparent 15%), radial-gradient(circle at 70% 70%, rgba(168,85,247,0.08), transparent 18%);filter:blur(30px);opacity:0.9;pointer-events:none;animation:floatUp 6s ease-in-out infinite}
+
+/* mini floating badge animation for icons */
+.badge-3d{will-change:transform}
+.badge-3d:hover{transform:translateY(-6px) rotateX(6deg)}

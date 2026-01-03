@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Matches — Scheduling</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+  <header>
+    <h1>🏏 Cricket Tournament</h1>
+      <nav style="display:flex;gap:12px;align-items:center">
+      <a href="index.html">Home</a>
+      <a href="scheduling.html">Scheduling</a>
+      <a href="points.html">Points Table</a>
+      <a href="playoffs.html">Playoffs</a>
+      <label class="switch" style="margin-left:8px">
+        <input type="checkbox" id="themeToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section>
+      <h3>Teams</h3>
+      <div id="teamsList"></div>
+    </section>
+
+    <section>
+      <h3>Generate Schedule</h3>
+      <button id="generateBtn">Generate Round Robin</button>
+    </section>
+
+    <section>
+      <h3>Matches</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Match</th>
+            <th>Time</th>
+            <th>A Runs</th>
+            <th>B Runs</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="matchesTbody"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h3>Order</h3>
+      <div style="display:flex;gap:8px">
+        <button id="randBtn">Randomize Order (no consecutive teams)</button>
+      </div>
+    </section>
+
+    <section>
+      <button onclick="resetAll()">Reset All Data</button>
+    </section>
+  </div>
+
+  <footer>Scheduling • Offline</footer>
+  <script src="main.js"></script>
+</body>
+</html>
